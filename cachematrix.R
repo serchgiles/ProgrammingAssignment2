@@ -30,6 +30,9 @@ cacheSolve <- function(x, ...) {
                 return(inverse)
         }
         mat <- x$get()
+        if (det(mat) == 0) {
+                stop("The matrix is not invertible")
+        }
         inverse <- solve(mat)
         x$setInverse(inverse)
         inverse
